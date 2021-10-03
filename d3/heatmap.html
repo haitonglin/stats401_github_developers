@@ -66,3 +66,26 @@
 </script>
 </body>
 
+<style>
+    .d3-calendar-tooltip {
+        background-color: white;
+        border: 2px solid #111;
+        color: black;
+        width: max-content;
+        padding: 3px 12px;
+    }
+
+    .d3-calendar-tooltip::after {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 12px;
+        width: 100%;
+        line-height: 1;
+        color: #111;
+        content: "\25BC";
+        position: absolute;
+        left: 0px;
+        top: 24px;
+        text-align: center;
+    }
+</style>
