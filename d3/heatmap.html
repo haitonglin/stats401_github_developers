@@ -2,32 +2,67 @@
     <meta charset="utf-8">
     <title>D3.js v4 Calendar Heatmap</title>
     <link rel="stylesheet" type="text/css" href="dep/calendar-heatmap.css">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            crossorigin="anonymous"></script>
+
+    <!-- moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- d3 -->
+    <!-- <script src="dep/d3.v4.js" charset="utf-8"></script> -->
+    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script>
+
+    <!-- https://github.com/team-centric-software/simple-d3-heatmap -->
+    <script src="https://cdn.jsdelivr.net/npm/@tcs-open-source/simple-d3-heatmap@latest/simple-d3-heatmap.min.js"></script>
 </head>
 
 <body>
-<div class="container"></div>
-<script src="dep/moment-with-locales.min.js" charset="utf-8"></script>
-<script src="dep/d3.v4.js" charset="utf-8"></script>
-<script src="dep/calendar-heatmap.js"></script>
-<script type="text/javascript">
-    var now = moment().endOf('day').toDate();
-    var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
-    var chartData = d3.timeDays(yearAgo, now).map(function (dateElement) {
-        return {
-            date: dateElement,
-            count: (dateElement.getDay() !== 0 && dateElement.getDay() !== 6) ? Math.floor(Math.random() * 60) : Math.floor(Math.random() * 10)
-        };
-    });
+<div id="container"></div>
 
-    var heatmap = calendarHeatmap()
-        .data(chartData)
-        .selector('.container')
-        .tooltipEnabled(true)
-        .colorRange(['#f4f7f7', '#79a8a9'])
-        .onClick(function (data) {
-            console.log('data', data);
-        });
-    heatmap();  // render the chart
+<script type="text/javascript">
+    function loadDateFromString(str) {
+        // const time = "2008-10-01 13:54:16-07:00";
+        const timeParser = d3.utcParse('%Y-%m-%d %H:%M:%S%Z');
+        return timeParser(str);
+    }
+
+    function renderHeatmap(data) {
+        const targetYear = 2016;
+
+        var date2count = {};
+        var all_dates = [];
+        for (const [dev_id, commits] of Object.entries(data)) {
+            for (const commit of commits) {
+                const date = loadDateFromString(commit);
+                if (date != null && date.getFullYear() === targetYear) {
+                    if (!(date in date2count)) date2count[date] = 0;
+                    date2count[date]++;
+                    all_dates.push(date); // use this to store dates cuz JS fucking converts date to string in date2count
+                }
+            }
+        }
+
+        var chartData = {};
+        for (const date of all_dates) {
+            // date.setHours(0);
+            // date.setMinutes(0);
+            // date.setSeconds(0);
+            chartData[date.getTime()] = date2count[date];
+        }
+        // console.log(chartData);
+
+        const heatmap = new SimpleD3Heatmap();
+        heatmap.yearly("container", chartData);
+    }
+
+    // load data
+    $.getJSON('../commits.json', function (data) {
+        renderHeatmap(data);
+    });
 </script>
 </body>
 
