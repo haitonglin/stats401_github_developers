@@ -31,33 +31,49 @@
         return timeParser(str);
     }
 
+    function dayFromDate(date) {
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+    }
+
     function renderHeatmap(data) {
         const targetYear = 2016;
 
-        var date2count = {};
-        var all_dates = [];
-        for (const [dev_id, commits] of Object.entries(data)) {
+        var time2count = {}; /// down to seconds
+        var date_str2date = {}; /// date string to date object JS fucking converts date to string
+        var day2dev_count = {}; /// down to days
+        for (const [_, commits] of Object.entries(data)) {
             for (const commit of commits) {
                 const date = loadDateFromString(commit);
                 if (date != null && date.getFullYear() === targetYear) {
-                    if (!(date in date2count)) date2count[date] = 0;
-                    date2count[date]++;
-                    all_dates.push(date); // use this to store dates cuz JS fucking converts date to string in date2count
+                    if (!(date in time2count)) time2count[date] = 0;
+                    time2count[date]++;
+                    date_str2date[date] = date;
+
+                    /// count the number of devs per day to calc means
+                    let d = new Date(date.getTime());
+                    dayFromDate(d);
+                    if (!(d in day2dev_count)) day2dev_count[d] = 0;
+                    day2dev_count[d]++;
+                    date_str2date[d] = d;
                 }
             }
         }
+        // console.log(time2count);
+        // console.log(day2dev_count);
 
-        var chartData = {};
-        for (const date of all_dates) {
-            // date.setHours(0);
-            // date.setMinutes(0);
-            // date.setSeconds(0);
-            chartData[date.getTime()] = date2count[date];
+        /// get average # of commits per day
+        var chart_data = {};
+        for (const [date_str, count] of Object.entries(time2count)) {
+            let d = new Date(date_str2date[date_str].getTime());
+            dayFromDate(d);
+            chart_data[d.getTime()] = count / day2dev_count[d];
         }
-        // console.log(chartData);
+        // console.log(chart_data);
 
         const heatmap = new SimpleD3Heatmap();
-        heatmap.yearly("container", chartData);
+        heatmap.yearly("container", chart_data);
     }
 
     // load data

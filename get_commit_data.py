@@ -7,13 +7,12 @@ DEV_ID = 50
 
 
 class CommitExtractor(ColumnExtractor):
-    def worker(self, *args):
-        dev_id = 10030028
-        file_path = os.path.join('cleaned', f'{dev_id}.json')
-        data = json.load(open(file_path, encoding='utf-8'))
-        commits = data['commit_list']
-
-        self.res[dev_id] = [c['commit_at'] for c in commits]
+    def worker(self, dev_ids: List[int], *args):
+        for dev_id in dev_ids:
+            file_path = os.path.join('cleaned', f'{dev_id}.json')
+            data = json.load(open(file_path, encoding='utf-8'))
+            commits = data['commit_list']
+            self.res[dev_id] = [c['commit_at'] for c in commits]
 
 
 def main():
