@@ -15,13 +15,13 @@
 <script type="text/javascript">
     // set the dimensions and margins of the graph
     const margin = {top: 0, right: 30, bottom: 50, left: 60},
-        width = 1280 - margin.left - margin.right,
+        width = 1000 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     const svg = d3.select("#container")
         .append("svg")
-        .attr("viewBox", [0, 0, width + 90, height + 80])
+        .attr("viewBox", [0, 0, width + 90, height + 450])
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -71,7 +71,7 @@
                         'A',                            // This means we're gonna build an elliptical arc
                         (start - end) / 2, ',',    // Next 2 lines are the coordinates of the inflexion point. Height of this point is proportional with start - end distance
                         (start - end) / 2, 0, 0, ',',
-                        start < end ? 1 : 0, end, ',', height - 30] // We always want the arc on top. So if end is before start, putting 0 here turn the arc upside down.
+                        start < end ? 0 : 1, end, ',', height - 30] // We always want the arc on top. So if end is before start, putting 0 here turn the arc upside down.
                         .join(' ');
                 })
                 .style("fill", "none")

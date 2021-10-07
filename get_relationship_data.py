@@ -18,17 +18,17 @@ def main():
     ).to_dict()
 
     id2public_repos = pd.cut(
-        group_by_id['public_repos'].apply(int), bins=[0, 20, 50, 100, np.inf],
+        group_by_id['public_repos'].apply(int), bins=[-np.inf, 20, 50, 100, np.inf],
         labels=['0-20', '20-50', '50-100', '100+'],
     ).to_dict()
 
     id2public_gists = pd.cut(
-        group_by_id['public_gists'].apply(int), bins=[0, 20, 50, 100, np.inf],
+        group_by_id['public_gists'].apply(int), bins=[-np.inf, 20, 50, 100, np.inf],
         labels=['0-20', '20-50', '50-100', '100+'],
     ).to_dict()
     id2n_followers = pd.cut(
-        group_by_id['followed_n'].apply(int), bins=[0, 50, 100, 500, 1000, np.inf],
-        labels=['0-50', '50-100', '100-500', '500-1000', '1000+'],
+        group_by_id['followed_n'].apply(int), bins=[-np.inf, 100, 500, 1000, np.inf],
+        labels=['0-100', '100-500', '500-1000', '1000+'],
     ).to_dict()
 
     data = {
@@ -77,9 +77,8 @@ def main():
     # print(link_counts)
     links = []
     for pair, count in link_counts.items():
-        # TODO: filter links based on counts?
-        # if count >= 20:
-        links.append(dict(source=pair[0], target=pair[1], value=count))
+        if count >= 10:
+            links.append(dict(source=pair[0], target=pair[1], value=count))
 
     ret = dict(nodes=nodes, links=links)
     json.dump(ret, open('characteristic_relationship.json', 'w', encoding='utf-8'), ensure_ascii=False)
