@@ -19,7 +19,7 @@ Explanation of fields in user entry:
 17. public_gists: Number of public gists
 18. public_repos: Number of public repositories
 19. follower_list: the ID list of users who are following her
-20. following_list: the ID list of users who are following her
+20. following_list: the ID list of users followed by her
 21. commit_list: the list of commit operations she conducted
     a) commit_at: commit_at, the timestamp that the committer submit the code changes
     b) generate_at: generate_at, the timestamp that the author commit the code changes
