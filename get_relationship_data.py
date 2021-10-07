@@ -23,8 +23,8 @@ def main():
     ).to_dict()
 
     id2public_gists = pd.cut(
-        group_by_id['public_gists'].apply(int), bins=[-np.inf, 20, 50, 100, np.inf],
-        labels=['0-20', '20-50', '50-100', '100+'],
+        group_by_id['public_gists'].apply(int), bins=[-np.inf, 3, 50, np.inf],
+        labels=['0-3', '3-50', '50+'],
     ).to_dict()
     id2n_followers = pd.cut(
         group_by_id['followed_n'].apply(int), bins=[-np.inf, 100, 500, 1000, np.inf],

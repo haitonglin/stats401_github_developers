@@ -16,7 +16,7 @@
     // set the dimensions and margins of the graph
     const margin = {top: 60, right: 30, bottom: 30, left: 60},
         width = 700 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = 600 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     const svg = d3.select("#container")
@@ -44,21 +44,16 @@
                 .domain(allGroups)
                 .range(d3.schemeSet2);
 
-            // A linear scale for node size
-            const size = d3.scaleLinear()
-                .domain([1, 10])
-                .range([0.5, 5]);
-
             // A linear scale to position the nodes on the X axis
             const x = d3.scalePoint()
                 .range([0, width])
                 .domain(allNodes);
             var y = d3.scaleLinear()
                 .range([height, 0])
-                .domain([0, 60]);
+                .domain([0, 50]);
             svg.append("g")
                 .call(d3.axisLeft(y))
-                .attr('transform', 'translate(-20, ' + (-margin['bottom']) + ')');
+                .attr('transform', 'translate(-30, ' + (-margin['bottom']) + ')');
 
             // In my input data, links are provided between nodes -id-, NOT between node names.
             // So I have to do a link between this id and the name
@@ -78,75 +73,80 @@
                     return ['M', start, height - 30,    // the arc starts at the coordinate x=start, y=height-30 (where the starting node is)
                         'A',                            // This means we're gonna build an elliptical arc
                         (start - end) / 2, ',',    // Next 2 lines are the coordinates of the inflexion point. Height of this point is proportional with start - end distance
-                        (start - end) / 2, 0, 0, ',',
+                        (start - end) / 2.3, 0, 0, ',',
                         start < end ? 0 : 1, end, ',', height - 30] // We always want the arc on top. So if end is before start, putting 0 here turn the arc upside down.
                         .join(' ');
                 })
                 .style("fill", "none")
-                .attr("stroke", "grey")
-                .style("stroke-width", 1);
+                .style('opacity', 0.4)
+                .style('stroke', d => color(idToNode[d.source].grp))
+                .style("stroke-width", 2);
 
-            // Add the circle for the nodes
-            const nodes = svg
-                .selectAll("mynodes")
+            const barWidth = 18;
+
+            /// bar plot
+            bars = svg.selectAll("mybar")
                 .data(data.nodes)
-                .join("circle")
-                .attr("cx", d => x(d.name))
-                .attr("cy", height - 30)
-                .attr("r", d => size(d.n))
-                .style("fill", d => color(d.grp))
-                .attr("stroke", 'black')
-                .attr("stroke-width", 2);
+                .enter()
+                .append("rect")
+                .attr("x", d => x(d.name) - barWidth)
+                .attr("y", d => y(d.n))
+                .attr("width", d => barWidth * 2)
+                .attr("height", function (d) {
+                    return height - y(d.n) - margin['bottom'];
+                })
+                .attr("fill", d => color(d.grp));
 
             // And give them a label
             const labels = svg
                 .selectAll("mylabels")
                 .data(data.nodes)
                 .join("text")
-                .attr("x", 0)
-                .attr("y", 0)
+                .attr('x', 0)
+                .attr('y', 0)
+                .style("text-anchor", "start")
                 .text(d => d.name)
-                .style("text-anchor", "end")
-                .attr("transform", d => `translate(${x(d.name)},${height - 15}) rotate(-45)`)
-                .style("font-size", 6);
+                .attr("transform", d => `translate(${x(d.name) + barWidth / 3}, ${y(d.n) - 10}) rotate(-90)`)
+                .style("font-size", 20);
 
             // Add the highlighting functionality
-            nodes.on('mouseover', function (event, d) {
+            bars.on('mouseover', function (event, d) {
                 // Highlight the nodes: every node is green except of him
-                nodes.style('opacity', .2);
-                d3.select(this).style('opacity', 1);
+                bars
+                    .transition()
+                    .style('opacity', .2);
+                d3.select(this)
+                    .transition()
+                    .style('opacity', 1);
 
                 // Highlight the connections
                 links
-                    .style('stroke', a => a.source === d.id || a.target === d.id ? color(d.grp) : '#b8b8b8')
-                    .style('stroke-opacity', a => a.source === d.id || a.target === d.id ? 1 : .2)
+                    .transition()
+                    .style('opacity', 1)
+                    .style('stroke', a => a.source === d.id || a.target === d.id ? color(d.grp) : 'grey')
+                    .style('opacity', a => a.source === d.id || a.target === d.id ? 1 : .1)
                     .style('stroke-width', a => a.source === d.id || a.target === d.id ? 4 : 1);
                 labels
-                    .style("font-size", b => b.name === d.name ? 18.9 : 2)
-                    .attr("y", b => b.name === d.name ? 10 : 0);
+                    .transition()
+                    // .style('opacity', b => b.name === d.name ? 1 : 0.2)
+                    .style('font-weight', b => b.name === d.name ? 'bold' : 'normal')
+                    .attr("x", b => b.name === d.name ? 10 : 0);
             })
-                .on('mouseout', d => {
-                    nodes.style('opacity', 1);
+                .on('mouseout', function (event, d) {
+                    bars
+                        .transition()
+                        .style('opacity', 1);
                     links
-                        .style('stroke', 'grey')
-                        .style('stroke-opacity', .8)
-                        .style('stroke-width', '1');
+                        .transition()
+                        .style('stroke', a => color(idToNode[a.source].grp))
+                        .style('opacity', .4)
+                        .style('stroke-width', 2);
                     labels
-                        .style("font-size", 6);
+                        .transition()
+                        // .style('opacity', 1)
+                        .style('font-weight', 'normal')
+                        .attr("x", 0)
                 });
-
-            /// bar plot
-            svg.selectAll("mybar")
-                .data(data.nodes)
-                .enter()
-                .append("rect")
-                .attr("x", d => x(d.name) - size(d.n) / 2)
-                .attr("y", d => y(d.n))
-                .attr("width", d => size(d.n))
-                .attr("height", function (d) {
-                    return height - y(d.n) - margin['bottom'];
-                })
-                .attr("fill", "#69b3a2")
         });
 </script>
 </body>
