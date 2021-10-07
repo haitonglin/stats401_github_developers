@@ -42,7 +42,7 @@
             // A color scale for groups:
             const color = d3.scaleOrdinal()
                 .domain(allGroups)
-                .range(d3.schemeSet2);
+                .range(['#f79256', '#fbd1a2', '#7dcfb6', '#1d4e89']);
 
             // A linear scale to position the nodes on the X axis
             const x = d3.scalePoint()
