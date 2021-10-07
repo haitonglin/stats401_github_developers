@@ -280,3 +280,8 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,python,jetbrains+all
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
