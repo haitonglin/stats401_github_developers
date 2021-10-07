@@ -14,12 +14,12 @@ var svg = d3.select("#my_dataviz")
 
 // Parse the Data
 d3.csv("parallel_data.csv", function(data) {
-  console.log(data);  
+  console.log(data);
 
   // Color scale: give me a specie name, I return a color
   var color = d3.scaleOrdinal()
-    .domain(["0-100 followers", "100-500 followers", "500-1000 followers", "1000-2000 followers", "2000+ folowers"])
-    .range([ "#440154ff", "#21908dff", "#fde725ff", "#ff6f68", "#ffdacc"])
+    .domain(["followers0-100", "followers100-500", "followers500-1000", "followers1000-2000 ", "folowers2000"])
+    .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
 
   // Here I set the list of dimension manually to control the order of axis:
   dimensions = ["following_n", "commit_n", "public_repos", "public_gists"]
