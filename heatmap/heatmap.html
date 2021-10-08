@@ -1,28 +1,21 @@
 <!-- Reference: https://github.com/team-centric-software/simple-d3-heatmap -->
 <head>
     <meta charset="utf-8">
-    <title>D3.js v4 Calendar Heatmap</title>
-    <link rel="stylesheet" type="text/css" href="dep/calendar-heatmap.css">
+    <title>Commit heatmap</title>
 
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            crossorigin="anonymous"></script>
-
-    <!-- moment.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
     <!-- d3 -->
-    <!-- <script src="dep/d3.v4.js" charset="utf-8"></script> -->
-    <!-- <script src="https://d3js.org/d3.v6.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script> -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 
-    <!-- https://github.com/team-centric-software/simple-d3-heatmap -->
-    <script src="https://cdn.jsdelivr.net/npm/@tcs-open-source/simple-d3-heatmap@latest/simple-d3-heatmap.min.js"></script>
+    <script src="simple-d3-heatmap.js"></script>
 </head>
 
 <body>
-<div id="container"></div>
+<div id="heatmap"></div>
+<div id="day-detail"></div>
 
 <script type="text/javascript">
     function loadDateFromString(str) {
@@ -73,13 +66,31 @@
         // console.log(chart_data);
 
         const heatmap = new SimpleD3Heatmap();
-        heatmap.yearly("container", chart_data);
+        heatmap.yearly("heatmap", chart_data, function (t) {
+            // console.log(t);
+            const timestamp = t.ts;
+            let date = new Date(timestamp);
+            d3.select('#heatmap').style("visibility", 'hidden');
+
+            let svg = d3.select('#day-detail')
+                .style("visibility", 'visible')
+                .append("svg")
+                .attr("width", 500)
+                .attr("height", 400);
+
+            var time_scale = d3.scaleTime()
+                .domain([new Date, new Date])
+                .nice(d3.timeDay)
+                .range([0, 450]);
+
+            svg.append("g")
+                .call(d3.axisBottom(time_scale))
+                .attr("transform", "translate(50,0)");
+        });
     }
 
     // load data
-    $.getJSON('../commits.json', function (data) {
-        renderHeatmap(data);
-    });
+    $.getJSON('../commits.json', renderHeatmap);
 </script>
 </body>
 
