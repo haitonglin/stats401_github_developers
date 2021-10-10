@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="dep/calendar-heatmap.css"> -->
 
     <!-- d3 -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="d3.v6.min.js"></script>
 </head>
 
 <body>
@@ -91,7 +91,7 @@
                 .append("rect")
                 .attr("x", d => x(d.name) - barWidth)
                 .attr("y", d => y(d.n))
-                .attr("width", d => barWidth * 2)
+                .attr("width", barWidth * 2)
                 .attr("height", function (d) {
                     return height - y(d.n) - margin['bottom'];
                 })
@@ -107,7 +107,8 @@
                 .style("text-anchor", "start")
                 .text(d => d.name)
                 .attr("transform", d => `translate(${x(d.name) + barWidth / 3}, ${y(d.n) - 10}) rotate(-90)`)
-                .style("font-size", 20);
+                .style("font-family", "Arial")
+                .style("font-size", 18);
 
             // Add the highlighting functionality
             bars.on('mouseover', function (event, d) {
