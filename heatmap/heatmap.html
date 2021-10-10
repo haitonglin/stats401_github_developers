@@ -100,7 +100,7 @@
             day2hours_data[day].push([hour, count / day2devs[day].size]);
         }
 
-        const heatmap = new SimpleD3Heatmap();
+        const heatmap = new SimpleD3Heatmap({minColor: '#d1ece4', maxColor: '#1d4e89', colorMode: 'linear'});
         heatmap.yearly("heatmap", chart_data, function (event, t) {
             const timestamp = t.ts;
             let date = new Date(timestamp);
