@@ -15,7 +15,7 @@
 
 <body>
 <div id="heatmap"></div>
-<div id="day-detail"></div>
+<div id="day-detail" class="container"></div>
 
 <script type="text/javascript">
     function loadDateFromString(str) {
@@ -30,13 +30,18 @@
         date.setSeconds(0);
     }
 
+    function hourFromDate(date) {
+        date.setMinutes(0);
+        date.setSeconds(0);
+    }
+
     function renderHeatmap(data) {
         const targetYear = 2016;
 
-        var time2count = {}; /// down to seconds
-        var date_str2date = {}; /// date string to date object JS fucking converts date to string
-        var day2dev_count = {}; /// down to days
-        for (const [_, commits] of Object.entries(data)) {
+        let time2count = {}; /// down to seconds
+        let date_str2date = {}; /// date string to date object JS fucking converts date to string
+        let day2devs = {}; /// down to days
+        for (const [dev_id, commits] of Object.entries(data)) {
             for (const commit of commits) {
                 const date = loadDateFromString(commit);
                 if (date != null && date.getFullYear() === targetYear) {
@@ -44,48 +49,101 @@
                     time2count[date]++;
                     date_str2date[date] = date;
 
-                    /// count the number of devs per day to calc means
-                    let d = new Date(date.getTime());
-                    dayFromDate(d);
-                    if (!(d in day2dev_count)) day2dev_count[d] = 0;
-                    day2dev_count[d]++;
-                    date_str2date[d] = d;
+                    { /// count the number of devs per day to calc means
+                        let d = new Date(date.getTime());
+                        dayFromDate(d);
+                        if (!(d in day2devs)) day2devs[d] = new Set();
+                        day2devs[d].add(dev_id);
+                        date_str2date[d] = d;
+                    }
                 }
             }
         }
-        // console.log(time2count);
-        // console.log(day2dev_count);
 
         /// get average # of commits per day
-        var chart_data = {};
+        let chart_data = {};
+        let hour2n_commits = {};
         for (const [date_str, count] of Object.entries(time2count)) {
-            let d = new Date(date_str2date[date_str].getTime());
-            dayFromDate(d);
-            chart_data[d.getTime()] = count / day2dev_count[d];
+            let day = new Date(date_str2date[date_str].getTime());
+            dayFromDate(day);
+            chart_data[day.getTime()] = count / day2devs[day].size;
+
+            /// mean commits per hour
+            let hour = new Date(date_str2date[date_str].getTime());
+            hourFromDate(hour);
+            date_str2date[hour] = hour;
+            if (!(hour in hour2n_commits)) hour2n_commits[hour] = 0;
+            hour2n_commits[hour] += count;
         }
-        // console.log(chart_data);
+
+        /// get day detail data
+        let day2hours_data = {};
+        for (const [hour_str, count] of Object.entries(hour2n_commits)) {
+            /// mean commits per hour
+            let hour = new Date(date_str2date[hour_str].getTime());
+
+            let day = new Date(date_str2date[hour_str].getTime());
+            dayFromDate(day);
+
+            if (!(day in day2hours_data)) day2hours_data[day] = [];
+            day2hours_data[day].push([hour, count / day2devs[day].size]);
+        }
 
         const heatmap = new SimpleD3Heatmap();
-        heatmap.yearly("heatmap", chart_data, function (t) {
-            // console.log(t);
+        heatmap.yearly("heatmap", chart_data, function (event, t) {
             const timestamp = t.ts;
             let date = new Date(timestamp);
-            d3.select('#heatmap').style("visibility", 'hidden');
+            let day = new Date(timestamp);
+            dayFromDate(day);
+            let hours_data = day2hours_data[day];
+            /// sort by hours
+            hours_data.sort((a, b) => {
+                    if (a[0] > b[0]) return 1;
+                    else if (b[0] === a[0]) return 0;
+                    else return -1;
+                }
+            );
 
+            const margin_left = 50;
+            const margin_bottom = 50;
+            d3.select('#heatmap').style("visibility", 'hidden');
             let svg = d3.select('#day-detail')
                 .style("visibility", 'visible')
                 .append("svg")
                 .attr("width", 500)
                 .attr("height", 400);
 
-            var time_scale = d3.scaleTime()
-                .domain([new Date, new Date])
+            /// x axis
+            let end_date = new Date(date);
+            end_date.setDate(date.getDate() + 1);
+            const time_scale = d3.scaleTime()
+                .domain([date, end_date])
                 .nice(d3.timeDay)
-                .range([0, 450]);
-
+                .range([0, 400]);
             svg.append("g")
                 .call(d3.axisBottom(time_scale))
-                .attr("transform", "translate(50,0)");
+                .attr("transform", `translate(${margin_left}, 300)`);
+
+            /// y axis
+            const y_max = Math.max.apply(Math, hours_data.map(o => o[1]));
+            let y = d3.scaleLinear()
+                .domain([0, y_max])
+                .range([250, 0]);
+            svg.append("g")
+                .call(d3.axisLeft(y))
+                .attr("transform", `translate(${margin_left}, 50)`);
+
+            /// add the area
+            svg.append("path")
+                .datum(hours_data)
+                .attr("fill", "#cce5df")
+                .attr("stroke", "#69b3a2")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.area()
+                    .x(d => margin_left + time_scale(d[0]))
+                    .y0(y(0) + margin_bottom)
+                    .y1(d => margin_bottom + y(d[1]))
+                );
         });
     }
 
@@ -115,5 +173,11 @@
         left: 0px;
         top: 24px;
         text-align: center;
+    }
+
+    .container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
     }
 </style>
