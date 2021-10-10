@@ -15,9 +15,20 @@
 
 <body>
 <div id="heatmap"></div>
-<div id="day-detail" class="container"></div>
+<div id="day-detail" class="container" style="visibility: hidden">
+    <svg id="day-svg">
+        <g></g>
+    </svg>
+    <br/>
+    <button type="button" id="ret-btn" onclick='hideDayDetails()'>Return</button>
+</div>
 
 <script type="text/javascript">
+    function hideDayDetails() {
+        d3.select('#day-detail').style('visibility', 'hidden');
+        d3.select('#heatmap').style('visibility', 'visible');
+    }
+
     function loadDateFromString(str) {
         // const time = "2008-10-01 13:54:16-07:00";
         const timeParser = d3.utcParse('%Y-%m-%d %H:%M:%S%Z');
@@ -98,20 +109,25 @@
             let hours_data = day2hours_data[day];
             /// sort by hours
             hours_data.sort((a, b) => {
-                    if (a[0] > b[0]) return 1;
-                    else if (b[0] === a[0]) return 0;
-                    else return -1;
-                }
-            );
+                if (a[0] > b[0]) return 1;
+                else if (b[0] === a[0]) return 0;
+                else return -1;
+            });
 
             const margin_left = 50;
             const margin_bottom = 50;
-            d3.select('#heatmap').style("visibility", 'hidden');
-            let svg = d3.select('#day-detail')
-                .style("visibility", 'visible')
-                .append("svg")
+            d3.select('#heatmap')
+                .style("visibility", 'hidden');
+            d3.select('#day-detail')
+                .style("visibility", 'visible');
+
+            let svg = d3.select('#day-svg')
                 .attr("width", 500)
                 .attr("height", 400);
+
+            /// remove previous groups
+            svg.selectAll('g').remove();
+            svg.selectAll('path').remove();
 
             /// x axis
             let end_date = new Date(date);
