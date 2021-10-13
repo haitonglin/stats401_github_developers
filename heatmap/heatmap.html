@@ -13,8 +13,11 @@
 </head>
 
 <body>
-<div id="heatmap"></div>
+<div id="heatmap">
+    <h3 style="text-align:center">Average number of commits of a developer in each day in 2016</h3>
+</div>
 <div id="day-detail" class="container" style="visibility: hidden">
+    <h3 style="text-align:center">Average number of commits per hour</h3>
     <svg id="day-svg">
         <g></g>
     </svg>
@@ -160,6 +163,16 @@
                     .y1(d => margin_bottom + y(d[1]))
                 );
         });
+
+        // d3.select('#heatmap')
+        //     .append('svg')
+        //     .append("text")
+        //     // .attr("text-anchor", "end")
+        //     .attr("x", 250)
+        //     .attr("y", 500)
+        //     .style("font-size", 26)
+        //     .style("font-weight", 'bold')
+        //     .text("Average number of commits per day");
     }
 
     // load data
