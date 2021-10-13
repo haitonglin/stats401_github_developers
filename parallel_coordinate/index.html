@@ -3,20 +3,29 @@
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
-<script type="text/javascript", src = "d3.v4.js"> </script>
+<script type="text/javascript" src="d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id="my_dataviz">
+    <button type="button" onclick="doNotHighlight()">Unhighlight</button>
+    <button type="button" onclick="get_filter(0)()">0-100</button>
+    <button type="button" onclick="get_filter(1)()">100-500</button>
+    <button type="button" onclick="get_filter(2)()">500-1000</button>
+    <button type="button" onclick="get_filter(3)()">1000-2000</button>
+    <button type="button" onclick="get_filter(4)()">2000+</button>
+    <br/>
+</div>
 
 <!-- A bit of style -->
 <style>
-.axis {
-  opacity: 0.4;
-}
-.axis:hover {
-  opacity: 1;
-}
+    .axis {
+        opacity: 0.4;
+    }
+
+    .axis:hover {
+        opacity: 1;
+    }
 </style>
 
 
-<script type="text/javascript", src = "example.js"> </script>
+<script type="text/javascript" src="example.js"></script>
