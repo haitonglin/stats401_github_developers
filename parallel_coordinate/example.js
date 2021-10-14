@@ -19,8 +19,7 @@ var color = d3.scaleOrdinal()
     .domain(filters)
     .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
 
-function get_filter(grp){
-    return function(_){
+function filter_data(grp){
         let selected_follower_range = filters[grp];
 
         // first every group turns grey
@@ -33,7 +32,6 @@ function get_filter(grp){
             .transition().duration(200)
             .style("stroke", color(selected_follower_range))
             .style("opacity", "1")
-    }
 }
 
 // Unhighlight
