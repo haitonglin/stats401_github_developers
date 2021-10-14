@@ -12,13 +12,13 @@ var svg = d3.select("#my_dataviz")
   .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-// Color scale: give me a specie name, I return a color
-var color = d3.scaleOrdinal()
-    .domain(["followers0-100", "followers100-500", "followers500-1000", "followers1000-2000 ", "folowers2000"])
-    .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
-
 // Highlight the specie that is hovered
 const filters = ['followers0-100','followers100-500','followers500-1000','followers1000-2000','followers2000']
+// Color scale: give me a specie name, I return a color
+var color = d3.scaleOrdinal()
+    .domain(filters)
+    .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
+
 function get_filter(grp){
     return function(_){
         let selected_follower_range = filters[grp];
