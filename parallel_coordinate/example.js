@@ -12,14 +12,58 @@ var svg = d3.select("#my_dataviz")
   .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+// Highlight the specie that is hovered
+const filters = ['followers0-100','followers100-500','followers500-1000','followers1000-2000','followers2000']
+// Color scale: give me a specie name, I return a color
+var color = d3.scaleOrdinal()
+    .domain(filters)
+    .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
+
+function filter_data(grp){
+        let selected_follower_range = filters[grp];
+
+        // first every group turns grey
+        d3.selectAll(".line")
+            .transition().duration(200)
+            .style("stroke", "lightgrey")
+            .style("opacity", "0.2");
+        // hide all mean lines
+        d3.selectAll(".mean-line")
+            .transition().duration(200)
+            .style("opacity", "0");
+        // Second the hovered specie takes its color
+        d3.selectAll(`.${selected_follower_range}`)
+            .transition().duration(200)
+            .style("stroke", color(selected_follower_range))
+            .style("opacity", 1);
+}
+
+function show_mean() {
+    // hide all lines
+    d3.selectAll(".line")
+        .transition().duration(200)
+        .style("stroke", "lightgrey")
+        .style("opacity", "0.2");
+    // show only means
+    d3.selectAll('.mean-line')
+        .transition().duration(200)
+        .style("opacity", 1);
+}
+
+// Unhighlight
+var doNotHighlight = function(d) {
+    d3.selectAll(".line")
+        .transition().duration(200).delay(100)
+        .style("stroke", function(d){ return( color(d.follower_range))} )
+        .style("opacity", 0.5)
+    d3.selectAll(".mean-line")
+        .transition().duration(200).delay(100)
+        .style("opacity", 0);
+}
+
 // Parse the Data
 d3.csv("parallel_data.csv", function(data) {
-  console.log(data);
-
-  // Color scale: give me a specie name, I return a color
-  var color = d3.scaleOrdinal()
-    .domain(["followers0-100", "followers100-500", "followers500-1000", "followers1000-2000 ", "folowers2000"])
-    .range([ "#f79256", "#fbd1a2","#7dcfb6", "#00b2ca","#1d4e89"])
+  // console.log(data);
 
   // Here I set the list of dimension manually to control the order of axis:
   dimensions = ["following_n", "commit_n", "public_repos", "public_gists"]
@@ -37,31 +81,6 @@ d3.csv("parallel_data.csv", function(data) {
     .range([0, width])
     .domain(dimensions);
 
-  // Highlight the specie that is hovered
-  var highlight = function(d){
-
-    selected_follower_range = d.follower_range
-
-    // first every group turns grey
-    d3.selectAll(".line")
-      .transition().duration(200)
-      .style("stroke", "lightgrey")
-      .style("opacity", "0.2")
-    // Second the hovered specie takes its color
-    d3.selectAll("." + selected_follower_range)
-      .transition().duration(200)
-      .style("stroke", color(selected_follower_range))
-      .style("opacity", "1")
-  }
-
-  // Unhighlight
-  var doNotHighlight = function(d){
-    d3.selectAll(".line")
-      .transition().duration(200).delay(1000)
-      .style("stroke", function(d){ return( color(d.follower_range))} )
-      .style("opacity", "1")
-  }
-
   // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
   function path(d) {
       return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
@@ -78,8 +97,6 @@ d3.csv("parallel_data.csv", function(data) {
       .style("fill", "none" )
       .style("stroke", function(d){ return( color(d.follower_range))} )
       .style("opacity", 0.5)
-      .on("mouseover", highlight)
-      .on("mouseleave", doNotHighlight )
 
   // Draw the axis:
   svg.selectAll("myAxis")
@@ -98,4 +115,19 @@ d3.csv("parallel_data.csv", function(data) {
       .text(function(d) { return d; })
       .style("fill", "black")
 
+    d3.csv("means.csv", function(mean_data) {
+        svg
+            .selectAll("mean_path")
+            .data(mean_data)
+            .enter()
+            .append("path")
+            .attr("class", function (d) { return `mean-line ${d.follower_range}` })
+            .attr("d", (d) => {
+                return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+            })
+            .style("fill", "none" )
+            .style("stroke", function(d) { return color(d.follower_range)} )
+            .style("stroke-width", 5)
+            .style("opacity", 0)
+    });
 })

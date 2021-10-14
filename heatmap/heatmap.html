@@ -4,20 +4,33 @@
     <title>Commit heatmap</title>
 
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="jquery-3.6.0.min.js"></script>
 
     <!-- d3 -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/d3@5.9.2/dist/d3.min.js"></script> -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="d3.v6.min.js"></script>
 
     <script src="simple-d3-heatmap.js"></script>
 </head>
 
 <body>
-<div id="heatmap"></div>
-<div id="day-detail" class="container"></div>
+<div id="heatmap">
+    <h3 style="text-align:center">Average number of commits of a developer in each day in 2016</h3>
+</div>
+<div id="day-detail" class="container" style="visibility: hidden">
+    <h3 style="text-align:center">Average number of commits per hour</h3>
+    <svg id="day-svg">
+        <g></g>
+    </svg>
+    <br/>
+    <button type="button" id="ret-btn" onclick='hideDayDetails()'>Return</button>
+</div>
 
 <script type="text/javascript">
+    function hideDayDetails() {
+        d3.select('#day-detail').style('visibility', 'hidden');
+        d3.select('#heatmap').style('visibility', 'visible');
+    }
+
     function loadDateFromString(str) {
         // const time = "2008-10-01 13:54:16-07:00";
         const timeParser = d3.utcParse('%Y-%m-%d %H:%M:%S%Z');
@@ -89,7 +102,7 @@
             day2hours_data[day].push([hour, count / day2devs[day].size]);
         }
 
-        const heatmap = new SimpleD3Heatmap();
+        const heatmap = new SimpleD3Heatmap({minColor: '#d1ece4', maxColor: '#1d4e89', colorMode: 'linear'});
         heatmap.yearly("heatmap", chart_data, function (event, t) {
             const timestamp = t.ts;
             let date = new Date(timestamp);
@@ -98,20 +111,25 @@
             let hours_data = day2hours_data[day];
             /// sort by hours
             hours_data.sort((a, b) => {
-                    if (a[0] > b[0]) return 1;
-                    else if (b[0] === a[0]) return 0;
-                    else return -1;
-                }
-            );
+                if (a[0] > b[0]) return 1;
+                else if (b[0] === a[0]) return 0;
+                else return -1;
+            });
 
             const margin_left = 50;
             const margin_bottom = 50;
-            d3.select('#heatmap').style("visibility", 'hidden');
-            let svg = d3.select('#day-detail')
-                .style("visibility", 'visible')
-                .append("svg")
+            d3.select('#heatmap')
+                .style("visibility", 'hidden');
+            d3.select('#day-detail')
+                .style("visibility", 'visible');
+
+            let svg = d3.select('#day-svg')
                 .attr("width", 500)
                 .attr("height", 400);
+
+            /// remove previous groups
+            svg.selectAll('g').remove();
+            svg.selectAll('path').remove();
 
             /// x axis
             let end_date = new Date(date);
@@ -145,6 +163,16 @@
                     .y1(d => margin_bottom + y(d[1]))
                 );
         });
+
+        // d3.select('#heatmap')
+        //     .append('svg')
+        //     .append("text")
+        //     // .attr("text-anchor", "end")
+        //     .attr("x", 250)
+        //     .attr("y", 500)
+        //     .style("font-size", 26)
+        //     .style("font-weight", 'bold')
+        //     .text("Average number of commits per day");
     }
 
     // load data

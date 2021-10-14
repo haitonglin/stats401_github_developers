@@ -5,7 +5,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="dep/calendar-heatmap.css"> -->
 
     <!-- d3 -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="d3.v6.min.js"></script>
 </head>
 
 <body>
@@ -48,9 +48,17 @@
             const x = d3.scalePoint()
                 .range([0, width])
                 .domain(allNodes);
-            var y = d3.scaleLinear()
+            let y = d3.scaleLinear()
                 .range([height, 0])
                 .domain([0, 50]);
+            svg.append("text")
+                .attr("text-anchor", "end")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -100)
+                .attr("y", -80)
+                .style("font-size", 26)
+                .style("font-weight", 'bold')
+                .text("Developer Frequency");
             svg.append("g")
                 .call(d3.axisLeft(y))
                 .attr('transform', 'translate(-30, ' + (-margin['bottom']) + ')');
@@ -91,7 +99,7 @@
                 .append("rect")
                 .attr("x", d => x(d.name) - barWidth)
                 .attr("y", d => y(d.n))
-                .attr("width", d => barWidth * 2)
+                .attr("width", barWidth * 2)
                 .attr("height", function (d) {
                     return height - y(d.n) - margin['bottom'];
                 })
@@ -107,7 +115,8 @@
                 .style("text-anchor", "start")
                 .text(d => d.name)
                 .attr("transform", d => `translate(${x(d.name) + barWidth / 3}, ${y(d.n) - 10}) rotate(-90)`)
-                .style("font-size", 20);
+                .style("font-family", "Arial")
+                .style("font-size", 18);
 
             // Add the highlighting functionality
             bars.on('mouseover', function (event, d) {
