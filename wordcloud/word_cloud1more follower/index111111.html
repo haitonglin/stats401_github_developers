@@ -1,0 +1,83 @@
+﻿<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="cloud.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+      var text_string = "   Consultant, Mentor, and Curator of technologies and business. Specialist in Software architecture and low-level code.  Member of RavenDB team. Full stack engineer from OS Kernel to Web Front End C.S Graduate from NJIT, Founder / Developer @ Therapy Square    Have working experience in Text Mining, CTR prediction, Recommendation System and Computational Advertising.          \nFeel free to contact ^_^ GP at MetaStable Capital.\nPreviously @airbnb, @earndotcom. Open source Android developer     Python Engineer   Chief Data Scientist @ boost.ai \n\nKaggle: www.kaggle.com/abhishek       iOS and Java Developer ,UI Designer { Sr.UIUX: Designer, Developer; }\n#HTML5, #CSS3, #jQuery, #Ajax, #Bootstrap, #Framework7, #Ionic, #PHP, #MySQL, #WordPress, #Meganto, #Laravel, #Yii Web developer, security researcher and data analyst.  Instrutor e desenvolvedor Android (Kotlin / Java).   myblog : www.urlteam.org  \n@KCPClub  Cyber security enthusiast. Freedom advocate. I believe in sharing knowledge, tools, and value open source software development. \n 智简人生   高并发 服务端 中间件  分布式 内核网络协议栈研究   PhD, Roboticist     Founder of @FOSSASIA developing #OpenSource #Software and #Hardware with a global community from our base in Asia. http://fossasia.org 一个小老师 Specialization in Artificial Intelligence. Startup Founder & Entrepreneur. \n\n Chair of ISO C++ committee, designer of various C++ features, and software architect at Microsoft. 翻墙大杀器之父 / 私人海底光缆懂事长 / 赵国翻墙领导小组组长 / 赵国劣绅 / 赵国民运祖父 / 赵国第一届民选总统 Designer, Developer, Pixel perfector You can also get in touch with me on Twitter @random_forests. MALWARE + FASHION = UNICORN   fe I am the best!   digg good github   founder of ekşi sözlük - ex-microsoft wcosd engineer - demoscener   Googler at MTV (Parking in SHA now). Software engineer at @walmartlabs, admin at @clojurians, hiker, Star Wars fan. Computer Science Student (B. Comp)\n\\\\ software and hardware hobbyist I like Win32 API and assembly language. Free thinkers are dangerous Born in Bulgaria / Kardzhali, lives in Turkey / Izmir. He loves open source software.   Software Engineer based in London. Currently working at Facebook.         may we give more than we take.           I am a software developer with more than 20 years experience.\nI started developing for iOS when the first SDK was released way back in 2008.   Writer, teacher and software worker born in Argentina, living in Switzerland. Talk is cheap. Show me the code. -- Linus Torvalds   typed functional programming and some other stuff. Ph.D. student in CS at Chinese Academy of Sciences. Research interest: transfer learning. Full-stack developer [React, React-Native, Relay, Apollo, Webpack, GraphQL & Koa].   不易匠心，方得始终   让坚持成为一种习惯 Research Scientist @ Amazon AWS Computer Vision\nCUNY PH.D. in Deep Learning and Computer Vision, Level Up Tutorials Creator, Syntax.fm co-host, bboy.                   Geek not Nerd, Photographer, FPS & RTS & MOBA Player. JS & Data Science         Action speak louder than words.   https://en.wikipedia.org/wiki/Rohan_Rao 科学爱好者 越努力，越幸福 You can have excuses or results. Not both. PHP/C++ developer with an interest in user-land and web exploitation.   Bazıları Hayal Eder Bazıları Yapar Android Engineer   0xCAFEBABE   one for all free music in China     个人工作和兴趣的记录会发在微博(@戴铭)上。对软件架构、性能优化、算法、提高开发效率和编译相关技术有着浓厚的兴趣。 Former accountant, current data scientist. Always learning.     Hi Independent Researcher of AI.\nFocus on Deep Reinforcement Learning, Meta Learning, Robot Learning   father, programming enthusiast, author and entrepreneur.     Web Solutions Engineer at Google, Hyderabad.\nA lot of my work is hosted @Bug-Assassins. Android Application Developer  Creator of codecasts.com and hosts.io Data Scientist 一切唯心造 公众号:BaronTalk\nhttps://zhuanlan.zhihu.com/baron   Success belongs to the Persevering 你全力以赴都打不倒的男人     //:ALERT(/HACKING SYMBOL/)//余弦 学习ing “Real learning comes about when the competitive spirit has ceased.” Dev, Speaker, Creator.\nCurrently Lead iOS @NYTimes Author of Responsible Responsive Design (A Book Apart). Designer/Developer at @filamentgroup. I love to surf. surf30a.com     @W3cplus  The quieter you become, the more you are able to hear. welcome to http://litesuits.com Bots, AI, advanced web frameworks, ohlc applications, you name it! I build it! ";
+
+      drawWordCloud(text_string);
+
+      function drawWordCloud(text_string){
+        var common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
+
+        var word_count = {};
+
+        var words = text_string.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+          if (words.length == 1){
+            word_count[words[0]] = 1;
+          } else {
+            words.forEach(function(word){
+              var word = word.toLowerCase();
+              if (word != "" && common.indexOf(word)==-1 && word.length>1){
+                if (word_count[word]){
+                  word_count[word]++;
+                } else {
+                  word_count[word] = 1;
+                }
+              }
+            })
+          }
+
+        var svg_location = "#chart";
+        var width = $(document).width();
+        var height = $(document).height();
+
+        var fill = d3.scale.category20();
+
+        var word_entries = d3.entries(word_count);
+
+        var xScale = d3.scale.linear()
+           .domain([0, d3.max(word_entries, function(d) {
+              return d.value;
+            })
+           ])
+           .range([10,100]);
+
+        d3.layout.cloud().size([width, height])
+          .timeInterval(20)
+          .words(word_entries)
+          .fontSize(function(d) { return xScale(+d.value); })
+          .text(function(d) { return d.key; })
+          .rotate(function() { return ~~(Math.random() * 2) * 90; })
+          .font("Impact")
+          .on("end", draw)
+          .start();
+
+        function draw(words) {
+          d3.select(svg_location).append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
+              .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
+            .selectAll("text")
+              .data(words)
+            .enter().append("text")
+              .style("font-size", function(d) { return xScale(d.value) + "px"; })
+              .style("font-family", "Impact")
+              .style("fill", function(d, i) { return fill(i); })
+              .attr("text-anchor", "middle")
+              .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+              })
+              .text(function(d) { return d.key; });
+        }
+
+        d3.layout.cloud().stop();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+﻿<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="cloud.js"></script>
+  </head>
+  <body>
+    <div id="chart"></div>
+    <script>
+      var text_string = "     Frontend developer: Javascript, React, DraftJS, GraphQL, Vue   If the apocalypse comes, beep me. Software Developer Front end developer based in Amsterdam Software Engineer @facebook           _Like Technology\n  _相信自己所相信的\n    _坚持自己所坚持的   Developing iOS apps since iPhone OS 2.2.    Software developer. \nI :heart: JavaScript\nI teach at EduLight Consulting\n             Freelance software developer   Android/ .NET developer iOS and macOS developer     Software engineer                     Dev and security enthusiast; capturing flags with JHtC CTF team       Physics Ph.D student at Stanford University / SLAC National Accelerator Laboratory         Passionate about NLP. In love with Python.   Google Summer of Code 2018 @ FreeType     Software Developer and Computer Science student at La Sapienza University, in Rome.                       Applications Engineer at Steelcase. Main responsibilities: development and support of internal dealer facing applications that are critical for online business.     hello           🐤 noobie               Investing some time developing @reahl, while coding elsewhere to make a living. Love my family then some helicopters, road running, tennis.           Android Developer So far so good I want to make products that are human-oriented.     Developer with focus on good design.   PhD in UC Irvine Not everything has to be useful. Sometimes code can just be fun :D Do something meaningful Patrick works as a Solutions Architect/SWAT guy for DataStax in Europe helping companies to develop mission critical systems using DataStax Enterprise.     Founder of @appcoda. Swift HK Organizer. iOS Developer and Blogger. Love coffee, food and travel. JUST  DO IT       Writing bugs, one at a time. Unit testing them. These days mainly Objective-C / Swift for iOS and Java / Kotlin (rookie) for Android 作家 Research Intern @ MSRA Web Application Developer ( Laravel | Codeigniter ) | MVC     Indian Institute of Technology Roorkee   Security guys~   https://www.linkedin.com/in/miroslav-magda-bb03aa23/   Programmer | Hacker | GSoC\'16 @reactos | I ❤ Programming |\nFollow me on Twitter @amaneureka Author, Developer         ExecuteAutomation helps people to understand software, automation, IoT, cloud, testing and more..       幻变的生命，留下的永远是最真诚的记忆！ Creator of gka 17 year old student and developer. 思想塑造人生。   Web Developer (PHP - Laravel, JS)      A software engineer passionate about AI and Competitive Programming. will.drevo+github@gmail.com   Front-end Developer, UI Designer.   (void *)  chan <= $ machine learning, deep learning,  nlp, computer vision   Engineer Freelance Developer Research Intern @ Microsoft Research Asia   Just a coder !!!\n Anonymity & Privacy Researcher / Executive Director @ Open Privacy Research Society. Vegan. Queer. ⚢.     Android Developer A front-end rookie.   Co-organizer @reactdenver. A student in USTC developholic, technical evangelist Dad / pythonist / geek / Star Wars and Mass Effect fan.   May the Force be with you. Designer. Developer. Filmmaker. ┑(￣Д ￣)┍ I\'m connected to open Source community since 2013 now-a-days i work in @Panacloud with Open Source Technologies like Mean Stack, Ionic Framework, firebase etc.   Team/Product lead of Jetpack at Automattic, creators of WordPress.com (amongst others).         Code and Blockchain Junkie       主攻APM方向，偶尔做些有趣的组件       Not a coder 是個喜歡 Laravel 的小小工程師。 Security researcher, Pentester, \nDeveloper Python, R, Ruby.\n\nhttp://jhonathandavi.com.br Sunday Morning is hiring: https://sunday37.com AI Researcher / Software Engineer skunky code junky   Data scientist chmod +x     A pilot that happens to know how to code.       一个在前端路无法回头的初级菜鸟页面仔 Developer. 🤕 用代码改善人类生活  ";
+
+      drawWordCloud(text_string);
+
+      function drawWordCloud(text_string){
+        var common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
+
+        var word_count = {};
+
+        var words = text_string.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+          if (words.length == 1){
+            word_count[words[0]] = 1;
+          } else {
+            words.forEach(function(word){
+              var word = word.toLowerCase();
+              if (word != "" && common.indexOf(word)==-1 && word.length>1){
+                if (word_count[word]){
+                  word_count[word]++;
+                } else {
+                  word_count[word] = 1;
+                }
+              }
+            })
+          }
+
+        var svg_location = "#chart";
+        var width = $(document).width();
+        var height = $(document).height();
+
+        var fill = d3.scale.category20();
+
+        var word_entries = d3.entries(word_count);
+
+        var xScale = d3.scale.linear()
+           .domain([0, d3.max(word_entries, function(d) {
+              return d.value;
+            })
+           ])
+           .range([10,100]);
+
+        d3.layout.cloud().size([width, height])
+          .timeInterval(20)
+          .words(word_entries)
+          .fontSize(function(d) { return xScale(+d.value); })
+          .text(function(d) { return d.key; })
+          .rotate(function() { return ~~(Math.random() * 2) * 90; })
+          .font("Impact")
+          .on("end", draw)
+          .start();
+
+        function draw(words) {
+          d3.select(svg_location).append("svg")
+              .attr("width", width)
+              .attr("height", height)
+            .append("g")
+              .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
+            .selectAll("text")
+              .data(words)
+            .enter().append("text")
+              .style("font-size", function(d) { return xScale(d.value) + "px"; })
+              .style("font-family", "Impact")
+              .style("fill", function(d, i) { return fill(i); })
+              .attr("text-anchor", "middle")
+              .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+              })
+              .text(function(d) { return d.key; });
+        }
+
+        d3.layout.cloud().stop();
+      }
+    </script>
+  </body>
+</html>
