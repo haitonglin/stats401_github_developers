@@ -2,32 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>STATS 401 Dashboard</title>
+    <title>STATS 401 Final Project: Group 9</title>
 </head>
 
 <body>
 
-<h1>GitHub as a Social Network</h1>
+<h1 style="text-align: center">GitHub as a Social Network</h1>
 
-<h2 style="text-align: center">Developers' Connections and Characteristics</h2>
-<iframe src="parallel_coordinate/index.html" width="500px" height="500px" style="border: 0;"></iframe>
-<iframe src="characteristic_relationship/bar-curve.html" width="750px" height="650px" style="border: 0;"></iframe>
+<hr/>
+<div class="outer">
+    <h2 style="width: 650px">I: Parallel Coordinates</h2>
+    <h2 style="width: 750px">II: Bar-Curve Diagram</h2>
+</div>
+<div style="height: 650px;" class="outer">
+    <iframe src="parallel_coordinate/index.html" width="500px" height="650px" style="border: 0;"></iframe>
+    <iframe src="characteristic_relationship/bar-curve.html" width="750px" height="100%" style="border: 0;"></iframe>
+</div>
+<h3 style="text-align: center">Developers' Connections and Production Activity</h3>
 
-<br/>
+<hr/>
 
-<h2 style="text-align: center">GitHub Developer Connections</h2>
-<iframe src="force-directed-graph/index.html" width="80%" height="500px"></iframe>
+<h2 style="text-align: center">III: Force-Directed Graph</h2>
+<iframe src="force-directed-graph/index.html" width="100%" height="500px" style="border: 0"></iframe>
+<h3 style="text-align: center">GitHub Developer Connections</h3>
 
-<br/>
+<hr/>
 
-<h2 style="text-align:center">Average number of commits of a developer in each day in 2016</h2>
-<iframe src="heatmap/heatmap.html" width="100%" height="500px" style="border: 0;"></iframe>
+<h2 style="text-align: center">IV: Commit Heatmap</h2>
+<iframe src="heatmap/heatmap.html" width="100%" height="500px" style="border: 0"></iframe>
+<h3 style="text-align:center">Average Number of Commits of a Developer in Each Day in 2016</h3>
 
-<br/>
+<hr/>
 
-<h2 style="text-align: center">Wordcloud of Developers' Biography</h2>
-<img src=wordcloud1.png width="49%" style="border: 0"/>
-<img src=wordcloud2.png width="49%" style="border: 0"/>
+<h2 style="text-align: center">V: User Bio Word Cloud</h2>
+<div>
+
+</div>
+
+<div class="outer">
+    <img src=wordcloud1.png width="49%" style="border: 0"/>
+    <img src=wordcloud2.png width="49%" style="border: 0"/>
+</div>
+<div class="outer">
+    <h3 style="width: 49%; margin-left: 50px">I: Parallel Coordinates</h3>
+    <h3 style="width: 49%; margin-left: 100px">II: Bar-Curve Diagram</h3>
+</div>
 
 </body>
+
+<style>
+    .outer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    hr {
+        color: rgba(119, 119, 119, 0.37);
+    }
+</style>
 </html>
