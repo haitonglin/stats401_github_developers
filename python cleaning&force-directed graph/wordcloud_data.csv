@@ -1,0 +1,365 @@
+,id,following_n,commit_n,bio,public_repos,public_gists,follower_range
+0,10074798,9,181,,11,0,followers0-100
+1,10067971,1,286,,24,0,followers0-100
+2,10040154,0,548,"Frontend developer: Javascript, React, DraftJS, GraphQL, Vue",49,2,followers0-100
+3,10047005,6,107,,41,0,followers0-100
+4,10017162,0,371,"""If the apocalypse comes, beep me.""",41,1,followers0-100
+5,10054226,3,602,Software Developer,15,0,followers0-100
+6,10009090,5,171,Front end developer based in Amsterdam,12,1,followers0-100
+7,10000166,0,269,Software Engineer @facebook,12,0,followers0-100
+8,1006803,0,219,,66,11,followers0-100
+9,1004026,0,270,,16,7,followers0-100
+10,10061652,2,562,,2,0,followers0-100
+11,10047089,0,513,,10,0,followers0-100
+12,1001717,1,754,,17,18,followers0-100
+13,10054336,5,291,"_Like Technology
+  _相信自己所相信的
+    _坚持自己所坚持的",10,0,followers0-100
+14,10074847,1,257,,23,0,followers0-100
+15,1000912,5,213,Developing iOS apps since iPhone OS 2.2. ,32,6,followers0-100
+16,10000174,0,151,,11,0,followers0-100
+17,10030028,271,382,"Software developer. 
+I :heart: JavaScript
+I teach at EduLight Consulting
+",100,16,followers0-100
+18,10040293,0,246,,7,0,followers0-100
+19,10068197,0,106,,15,0,followers0-100
+20,10017352,1,110,,5,5,followers0-100
+21,10074936,9,107,,16,0,followers0-100
+22,1004729,0,268,,33,0,followers0-100
+23,10000206,24,207,,28,7,followers0-100
+24,1000918,89,813,Freelance software developer,22,2,followers0-100
+25,10061736,0,413,,28,19,followers0-100
+26,10030099,5,140,Android/ .NET developer,14,0,followers0-100
+27,10040335,154,236,iOS and macOS developer,106,1,followers0-100
+28,10000207,0,396,,11,0,followers0-100
+29,1006840,1,168,,8,0,followers0-100
+30,10075074,4,637,Software engineer,13,0,followers0-100
+31,10054434,78,206,,182,0,followers0-100
+32,1001756,3,423,,23,2,followers0-100
+33,10047434,33,584,,33,1,followers0-100
+34,1006193,10,115,,6,5,followers0-100
+35,10000354,7,375,,8,0,followers0-100
+36,1004034,12,655,,91,0,followers0-100
+37,1005453,4,351,,7,6,followers0-100
+38,1007521,9,329,,25,0,followers0-100
+39,1003021,0,120,,30,0,followers0-100
+40,10000553,10,135,,4,0,followers0-100
+41,10009354,44,678,Dev and security enthusiast; capturing flags with JHtC CTF team,45,34,followers0-100
+42,10068494,1,111,,12,0,followers0-100
+43,1001758,4,470,,15,0,followers0-100
+44,10054913,2,184,,16,1,followers0-100
+45,10075261,3,485,Physics Ph.D student at Stanford University / SLAC National Accelerator Laboratory,13,0,followers0-100
+46,10061932,17,219,,15,0,followers0-100
+47,10040347,0,181,,25,0,followers0-100
+48,10000571,1,263,,2,0,followers0-100
+49,1003031,0,299,,34,1,followers0-100
+50,10009426,1,115,Passionate about NLP. In love with Python.,4,0,followers0-100
+51,10068531,6,576,,7,0,followers0-100
+52,10017618,5,503,Google Summer of Code 2018 @ FreeType,20,0,followers0-100
+53,1004747,1,889,,7,1,followers0-100
+54,1005502,1,552,,34,0,followers0-100
+55,10062216,19,132,"Software Developer and Computer Science student at La Sapienza University, in Rome.",12,1,followers0-100
+56,100406,30,716,,162,47,followers0-100
+57,10009435,2,126,,17,0,followers0-100
+58,10068561,6,238,,57,0,followers0-100
+59,10040690,2,167,,27,0,followers0-100
+60,1005509,0,209,,6,0,followers0-100
+61,10062233,0,790,,14,1,followers0-100
+62,10047598,7,253,,18,1,followers0-100
+63,1003070,0,202,,27,3,followers0-100
+64,1004074,27,196,,9,2,followers0-100
+65,10000800,0,886,,2,0,followers0-100
+66,10055212,9,270,,23,3,followers0-100
+67,10068564,2,173,Applications Engineer at Steelcase. Main responsibilities: development and support of internal dealer facing applications that are critical for online business.,26,0,followers0-100
+68,10075390,7,302,,29,0,followers0-100
+69,10009525,5,113,,3,0,followers0-100
+70,10040946,3,542,hello,26,0,followers0-100
+71,100476,7,843,,57,3,followers0-100
+72,10062446,0,367,,25,0,followers0-100
+73,1000112,0,866,,20,0,followers0-100
+74,10018185,2,381,,21,0,followers0-100
+75,10030971,5,411,,18,1,followers0-100
+76,10055293,89,508,🐤,87,5,followers0-100
+77,10040982,0,426,noobie,3,0,followers0-100
+78,10062472,2,652,,14,0,followers0-100
+79,10075400,4,175,,0,0,followers0-100
+80,1000956,3,320,,27,3,followers0-100
+81,10018409,0,314,,2,0,followers0-100
+82,10068618,1,108,,7,0,followers0-100
+83,10009613,1,427,,11,0,followers0-100
+84,1001841,5,236,,1,0,followers0-100
+85,10047770,0,438,"Investing some time developing @reahl, while coding elsewhere to make a living. Love my family then some helicopters, road running, tennis.",4,0,followers0-100
+86,10001206,9,712,,13,0,followers0-100
+87,10031317,2,121,,13,0,followers0-100
+88,1006865,0,107,,5,1,followers0-100
+89,10055458,0,200,,16,0,followers0-100
+90,1006260,19,225,,13,3,followers0-100
+91,10009633,105,444,Android Developer,39,0,followers0-100
+92,10001277,14,216,So far so good,16,0,followers0-100
+93,10041262,0,333,I want to make products that are human-oriented.,11,3,followers0-100
+94,1003152,2,664,,17,0,followers0-100
+95,1001885,5,174,,39,0,followers0-100
+96,10047883,14,111,Developer with focus on good design.,9,0,followers0-100
+97,10001338,1,772,,4,0,followers0-100
+98,10062637,4,157,PhD in UC Irvine,35,0,followers0-100
+99,10075633,8,549,Not everything has to be useful. Sometimes code can just be fun :D,21,5,followers0-100
+100,10001124,28,650,Do something meaningful,36,0,followers100-500
+101,1006924,2,827,Patrick works as a Solutions Architect/SWAT guy for DataStax in Europe helping companies to develop mission critical systems using DataStax Enterprise.,94,30,followers100-500
+102,10042,28,866,,63,24,followers100-500
+103,100044,5,695,,19,3,followers100-500
+104,100522,3,289,"Founder of @appcoda. Swift HK Organizer. iOS Developer and Blogger. Love coffee, food and travel.",3,0,followers100-500
+105,10074787,7,201,JUST  DO IT,43,0,followers100-500
+106,101314,16,247,,48,7,followers100-500
+107,10147086,0,264,,24,0,followers100-500
+108,1012532,7,480,,20,5,followers100-500
+109,1008174,0,767,"Writing bugs, one at a time. Unit testing them. These days mainly Objective-C / Swift for iOS and Java / Kotlin (rookie) for Android",55,10,followers100-500
+110,10082395,1,323,作家,94,0,followers100-500
+111,10141467,3,823,Research Intern @ MSRA,24,4,followers100-500
+112,10151448,202,115,Web Application Developer ( Laravel | Codeigniter ) | MVC,45,1,followers100-500
+113,10161996,19,149,,34,0,followers100-500
+114,10211608,0,412,,27,6,followers100-500
+115,10183382,138,368,Indian Institute of Technology Roorkee,41,50,followers100-500
+116,1028403,1,382,,31,6,followers100-500
+117,10292916,702,814,Security guys~,43,7,followers100-500
+118,1029298,6,890,,19,0,followers100-500
+119,1025656,1,412,https://www.linkedin.com/in/miroslav-magda-bb03aa23/,17,29,followers100-500
+120,10269843,90,130,,35,0,followers100-500
+121,10295295,2,745,"Programmer | Hacker | GSoC'16 @reactos | I ❤ Programming |
+Follow me on Twitter @amaneureka",16,1,followers100-500
+122,1028064,2,396,"Author, Developer",36,0,followers100-500
+123,1025117,10,187,,16,0,followers100-500
+124,103433,18,123,,65,26,followers100-500
+125,103360,3,697,,61,11,followers100-500
+126,10312,0,507,,113,182,followers100-500
+127,10337030,3,337,"ExecuteAutomation helps people to understand software, automation, IoT, cloud, testing and more..",23,12,followers100-500
+128,10380145,2,183,,14,2,followers100-500
+129,1038224,6,454,,4,0,followers100-500
+130,10327656,2,296,,14,0,followers100-500
+131,10431308,21,667,幻变的生命，留下的永远是最真诚的记忆！,8,0,followers100-500
+132,10385585,29,569,Creator of gka,14,1,followers100-500
+133,10399774,17,870,17 year old student and developer.,31,16,followers100-500
+134,10428176,12,454,思想塑造人生。,110,0,followers100-500
+135,10388530,6,135,,19,6,followers100-500
+136,10441427,62,106,"Web Developer (PHP - Laravel, JS) ",17,0,followers100-500
+137,10447352,0,436,,105,5,followers100-500
+138,1044223,0,502,,95,123,followers100-500
+139,10496228,0,376,A software engineer passionate about AI and Competitive Programming.,9,0,followers100-500
+140,1045250,13,536,will.drevo+github@gmail.com,14,1,followers100-500
+141,10480260,51,321,,51,6,followers100-500
+142,10487845,569,806,"Front-end Developer, UI Designer.",41,5,followers100-500
+143,10574326,0,350,,15,1,followers100-500
+144,1055166,56,257,(void *)  chan <= $,425,27,followers100-500
+145,10591412,23,382,"machine learning, deep learning,  nlp, computer vision",19,1,followers100-500
+146,1059327,645,266,,81,42,followers100-500
+147,105860,12,581,Engineer,17,4,followers100-500
+148,10641033,9,409,Freelance Developer,3,0,followers100-500
+149,10631563,52,133,Research Intern @ Microsoft Research Asia,12,0,followers100-500
+150,10723969,23,255,,26,0,followers100-500
+151,10725468,20,843,"Just a coder !!!
+",58,0,followers100-500
+152,106626,4,403,Anonymity & Privacy Researcher / Executive Director @ Open Privacy Research Society. Vegan. Queer. ⚢.,14,4,followers100-500
+153,10699,10,319,,104,13,followers100-500
+154,1073054,0,172,,112,11,followers100-500
+155,10722815,6,480,Android Developer,19,0,followers100-500
+156,10768423,14,355,A front-end rookie.,34,0,followers100-500
+157,10797139,0,179,,31,25,followers100-500
+158,1075861,84,831,Co-organizer @reactdenver.,62,4,followers100-500
+159,10773481,91,485,A student in USTC,61,0,followers100-500
+160,10736,15,596,"developholic, technical evangelist",50,78,followers100-500
+161,1076654,103,892,Dad / pythonist / geek / Star Wars and Mass Effect fan.,34,18,followers100-500
+162,1077496,0,892,,28,236,followers100-500
+163,1080404,0,746,May the Force be with you.,10,6,followers100-500
+164,108285,2,528,Designer. Developer. Filmmaker.,16,5,followers100-500
+165,10842398,15,126,┑(￣Д ￣)┍,15,2,followers100-500
+166,10865465,13,516,"I'm connected to open Source community since 2013 now-a-days i work in @Panacloud with Open Source Technologies like Mean Stack, Ionic Framework, firebase etc.",62,0,followers100-500
+167,10837357,0,328,,16,0,followers100-500
+168,108942,6,344,"Team/Product lead of Jetpack at Automattic, creators of WordPress.com (amongst others).",23,6,followers100-500
+169,109013,268,208,,91,42,followers100-500
+170,1091075,6,871,,11,0,followers100-500
+171,10934,18,108,,17,1,followers100-500
+172,1091362,3,200,,4,0,followers100-500
+173,108992,3,385,Code and Blockchain Junkie,38,55,followers100-500
+174,109413,31,595,,25,12,followers100-500
+175,11003055,51,158,,40,0,followers100-500
+176,11010193,44,386,,7,0,followers100-500
+177,10988520,1,400,主攻APM方向，偶尔做些有趣的组件,46,0,followers100-500
+178,1100537,0,254,,3,0,followers100-500
+179,110063,102,364,,22,43,followers100-500
+180,11025639,14,262,,8,0,followers100-500
+181,110466,1259,226,Not a coder,62,6,followers100-500
+182,1116129,665,273,是個喜歡 Laravel 的小小工程師。,38,14,followers100-500
+183,11183678,547,217,"Security researcher, Pentester, 
+Developer Python, R, Ruby.
+
+http://jhonathandavi.com.br",45,20,followers100-500
+184,1117026,740,166,Sunday Morning is hiring: https://sunday37.com,40,3,followers100-500
+185,1115758,32,738,AI Researcher / Software Engineer,23,0,followers100-500
+186,1120875,44,213,skunky code junky,40,1,followers100-500
+187,1121786,29,155,,37,0,followers100-500
+188,11235783,1,828,Data scientist,32,3,followers100-500
+189,112451,135,653,chmod +x,80,177,followers100-500
+190,1119778,182,621,,46,16,followers100-500
+191,1131667,285,721,,15,9,followers100-500
+192,1131072,38,661,A pilot that happens to know how to code.,40,7,followers100-500
+193,11324332,9,727,,50,0,followers100-500
+194,1132652,3,255,,40,5,followers100-500
+195,113071,50,552,,17,8,followers100-500
+196,1132815,54,134,一个在前端路无法回头的初级菜鸟页面仔,12,0,followers100-500
+197,11402866,35,268,Developer. 🤕,25,3,followers100-500
+198,11390617,31,593,用代码改善人类生活,158,4,followers100-500
+199,11409285,11,807,,44,14,followers100-500
+200,105970,17,581,"Consultant, Mentor, and Curator of technologies and business. Specialist in Software architecture and low-level code.  Member of RavenDB team.",27,183,followers500-1000
+201,1067743,150,646,Full stack engineer from OS Kernel to Web Front End,26,15,followers500-1000
+202,10794748,1187,233,"C.S Graduate from NJIT, Founder / Developer @ Therapy Square ",19,0,followers500-1000
+203,1091653,0,817,,39,0,followers500-1000
+204,10925208,8,173,"Have working experience in Text Mining, CTR prediction, Recommendation System and Computational Advertising.          
+Feel free to contact ^_^",23,0,followers500-1000
+205,10965087,6,824,"GP at MetaStable Capital.
+Previously @airbnb, @earndotcom.",54,3,followers500-1000
+206,11039841,3,670,Open source Android developer,43,0,followers500-1000
+207,112175,3,624,,28,1,followers500-1000
+208,114821,40,806,,124,11,followers500-1000
+209,1171349,63,756,Python Engineer,74,22,followers500-1000
+210,118,28,707,,38,152,followers500-1000
+211,1183441,63,311,"Chief Data Scientist @ boost.ai 
+
+Kaggle: www.kaggle.com/abhishek",34,4,followers500-1000
+212,1201049,439,583,,4,5,followers500-1000
+213,120859,0,404,,2,0,followers500-1000
+214,1206841,29,657,,36,3,followers500-1000
+215,12420577,36,473,"iOS and Java Developer ,UI Designer",8,0,followers500-1000
+216,1250826,53,773,"{ Sr.UIUX: Designer, Developer; }
+#HTML5, #CSS3, #jQuery, #Ajax, #Bootstrap, #Framework7, #Ionic, #PHP, #MySQL, #WordPress, #Meganto, #Laravel, #Yii",21,1,followers500-1000
+217,12861404,67,728,"Web developer, security researcher and data analyst. ",46,1,followers500-1000
+218,12992136,0,378,Instrutor e desenvolvedor Android (Kotlin / Java).,103,0,followers500-1000
+219,1311782,2,550,,46,0,followers500-1000
+220,13358272,7,582,"myblog : www.urlteam.org  
+@KCPClub ",19,0,followers500-1000
+221,13443322,137,826,"Cyber security enthusiast. Freedom advocate. I believe in sharing knowledge, tools, and value open source software development. 
+",29,6,followers500-1000
+222,13513647,4,334,智简人生,6,1,followers500-1000
+223,141442,0,478,,21,1,followers500-1000
+224,14356223,0,150,高并发 服务端 中间件  分布式 内核网络协议栈研究,14,0,followers500-1000
+225,1466033,10,184,,7,3,followers500-1000
+226,14815269,1,673,"PhD, Roboticist",28,11,followers500-1000
+227,1528297,104,290,,29,3,followers500-1000
+228,161707,4,248,,75,10,followers500-1000
+229,1658742,13,565,Founder of @FOSSASIA developing #OpenSource #Software and #Hardware with a global community from our base in Asia. http://fossasia.org,15,0,followers500-1000
+230,16715062,11,204,一个小老师,13,0,followers500-1000
+231,17712306,207,572,"Specialization in Artificial Intelligence. Startup Founder & Entrepreneur. 
+
+",43,1,followers500-1000
+232,1801526,0,373,"Chair of ISO C++ committee, designer of various C++ features, and software architect at Microsoft.",1,1,followers500-1000
+233,18501675,788,269,翻墙大杀器之父 / 私人海底光缆懂事长 / 赵国翻墙领导小组组长 / 赵国劣绅 / 赵国民运祖父 / 赵国第一届民选总统,5,0,followers500-1000
+234,187922,119,458,"Designer, Developer, Pixel perfector",39,36,followers500-1000
+235,19695904,1,241,You can also get in touch with me on Twitter @random_forests.,4,4,followers500-1000
+236,19986532,0,421,MALWARE + FASHION = UNICORN,5,0,followers500-1000
+237,208827,52,599,,61,25,followers500-1000
+238,2108595,39,248,fe,275,6,followers500-1000
+239,21303438,10,501,I am the best!,79,5,followers500-1000
+240,228910,2,703,,33,1,followers500-1000
+241,23257329,0,729,digg good github,7,0,followers500-1000
+242,239291,25,860,,76,18,followers500-1000
+243,241217,31,348,founder of ekşi sözlük - ex-microsoft wcosd engineer - demoscener,29,39,followers500-1000
+244,24597,74,201,,27,54,followers500-1000
+245,2507027,60,820,Googler at MTV (Parking in SHA now).,115,227,followers500-1000
+246,2522010,92,515,"Software engineer at @walmartlabs, admin at @clojurians, hiker, Star Wars fan.",26,5,followers500-1000
+247,25334129,0,134,"Computer Science Student (B. Comp)
+\\ software and hardware hobbyist",8,0,followers500-1000
+248,2605401,646,861,I like Win32 API and assembly language.,291,38,followers500-1000
+249,2624370,195,518,Free thinkers are dangerous,48,11,followers500-1000
+250,271912,151,434,"Born in Bulgaria / Kardzhali, lives in Turkey / Izmir. He loves open source software.",16,6,followers500-1000
+251,3365146,10,232,,51,3,followers500-1000
+252,3436659,12,435,Software Engineer based in London. Currently working at Facebook.,15,1,followers500-1000
+253,3814898,8,732,,63,12,followers500-1000
+254,385636,11,263,,28,6,followers500-1000
+255,4035593,1,112,,3,21,followers500-1000
+256,42628,59,682,,51,14,followers500-1000
+257,5007149,1,110,may we give more than we take.,10,0,followers500-1000
+258,5019523,21,422,,51,4,followers500-1000
+259,5111206,29,727,,15,0,followers500-1000
+260,51308,0,572,,52,11,followers500-1000
+261,5357526,0,600,,28,1,followers500-1000
+262,5353046,52,536,,20,1,followers500-1000
+263,5425762,0,689,"I am a software developer with more than 20 years experience.
+I started developing for iOS when the first SDK was released way back in 2008.",8,0,followers500-1000
+264,5403044,1,339,,258,1,followers500-1000
+265,55348,48,852,"Writer, teacher and software worker born in Argentina, living in Switzerland.",67,11,followers500-1000
+266,5633006,4032,858,Talk is cheap. Show me the code. -- Linus Torvalds,31,0,followers500-1000
+267,567328,1,478,,23,6,followers500-1000
+268,609862,363,702,typed functional programming and some other stuff.,40,18,followers500-1000
+269,6158206,25,437,Ph.D. student in CS at Chinese Academy of Sciences. Research interest: transfer learning.,29,0,followers500-1000
+270,6207220,1970,722,"Full-stack developer [React, React-Native, Relay, Apollo, Webpack, GraphQL & Koa].",112,10,followers500-1000
+271,6264733,0,439,,25,5,followers500-1000
+272,6345287,333,316,不易匠心，方得始终,27,2,followers500-1000
+273,634138,7,114,,12,14,followers500-1000
+274,6347031,17,739,让坚持成为一种习惯,21,0,followers500-1000
+275,6371759,6,223,"Research Scientist @ Amazon AWS Computer Vision
+CUNY PH.D. in Deep Learning and Computer Vision,",65,0,followers500-1000
+276,669383,13,457,"Level Up Tutorials Creator, Syntax.fm co-host, bboy.",57,13,followers500-1000
+277,676347,1,778,,27,151,followers500-1000
+278,679824,261,373,,38,1,followers500-1000
+279,6824547,28,265,,23,0,followers500-1000
+280,6889,2,301,,8,0,followers500-1000
+281,6892902,115,155,,6,1,followers500-1000
+282,7000305,12,242,,22,0,followers500-1000
+283,70271,1,407,,17,3,followers500-1000
+284,71636,41,741,,11,24,followers500-1000
+285,711987,53,896,,10,8,followers500-1000
+286,731424,63,899,"Geek not Nerd, Photographer, FPS & RTS & MOBA Player. JS & Data Science",98,66,followers500-1000
+287,757690,6,478,,3,1,followers500-1000
+288,809089,179,158,,426,15,followers500-1000
+289,8341653,6,435,,6,0,followers500-1000
+290,8440269,5,686,,84,28,followers500-1000
+291,8413308,20,414,Action speak louder than words.,26,1,followers500-1000
+292,8609851,10,453,,77,0,followers500-1000
+293,8954217,4,136,https://en.wikipedia.org/wiki/Rohan_Rao,12,0,followers500-1000
+294,9159613,0,183,科学爱好者,21,0,followers500-1000
+295,921981,61,731,越努力，越幸福,16,0,followers500-1000
+296,9313216,43,747,You can have excuses or results. Not both.,20,0,followers500-1000
+297,9409828,5,208,PHP/C++ developer with an interest in user-land and web exploitation.,23,2,followers500-1000
+298,939727,0,463,,17,7,followers500-1000
+299,9459881,2,172,Bazıları Hayal Eder Bazıları Yapar,62,0,followers500-1000
+300,11799296,51,850,Android Engineer,63,107,followers1000-2000
+301,13295397,0,103,,9,0,followers1000-2000
+302,1637169,91,521,0xCAFEBABE,51,23,followers1000-2000
+303,1671686,3,605,,22,0,followers1000-2000
+304,18599108,0,152,one for all free music in China,4,0,followers1000-2000
+305,188336,5,806,,33,17,followers1000-2000
+306,2515289,5,289,,22,8,followers1000-2000
+307,251980,3,464,个人工作和兴趣的记录会发在微博(@戴铭)上。对软件架构、性能优化、算法、提高开发效率和编译相关技术有着浓厚的兴趣。,16,1,followers1000-2000
+308,2623954,208,396,"Former accountant, current data scientist. Always learning.  ",54,10,followers1000-2000
+309,2784308,124,558,,66,22,followers1000-2000
+310,3202758,0,743,Hi,48,6,followers1000-2000
+311,3880963,27,482,"Independent Researcher of AI.
+Focus on Deep Reinforcement Learning, Meta Learning, Robot Learning",87,4,followers1000-2000
+312,464320,34,833,,56,19,followers1000-2000
+313,473888,82,858,"father, programming enthusiast, author and entrepreneur.",184,20,followers1000-2000
+314,475628,39,166,,30,8,followers1000-2000
+315,526114,0,465,,65,77,followers1000-2000
+316,5443732,4,594,"Web Solutions Engineer at Google, Hyderabad.
+A lot of my work is hosted @Bug-Assassins.",20,0,followers1000-2000
+317,5959435,38,543,Android Application Developer ,123,9,followers1000-2000
+318,6011686,4,503,Creator of codecasts.com and hosts.io,67,11,followers1000-2000
+319,6183674,25,462,Data Scientist,17,0,followers1000-2000
+320,6782576,72,713,一切唯心造,30,6,followers1000-2000
+321,7449405,23,745,"公众号:BaronTalk
+https://zhuanlan.zhihu.com/baron",17,10,followers1000-2000
+322,7847308,44,426,,147,0,followers1000-2000
+323,8285047,3,648,Success belongs to the Persevering,25,0,followers1000-2000
+324,8814535,51,191,你全力以赴都打不倒的男人,13,6,followers1000-2000
+325,950533,4,165,,28,2,followers1000-2000
+326,99915,1,354,,35,0,followers1000-2000
+327,1061138,12,148,//:ALERT(/HACKING SYMBOL/)//余弦,9,4,followers2000
+328,10704521,30,447,学习ing,71,8,followers2000
+329,1159854,9,448,“Real learning comes about when the competitive spirit has ceased.”,7,7,followers2000
+330,1468993,16,556,"Dev, Speaker, Creator.
+Currently Lead iOS @NYTimes",37,27,followers2000
+331,214783,36,462,Author of Responsible Responsive Design (A Book Apart). Designer/Developer at @filamentgroup. I love to surf. surf30a.com,53,38,followers2000
+332,2352090,0,542,,30,0,followers2000
+333,3346272,15,283,,25,0,followers2000
+334,368462,217,414,@W3cplus ,45,124,followers2000
+335,3734415,0,441,"The quieter you become, the more you are able to hear.",12,0,followers2000
+336,3939305,50,353,welcome to http://litesuits.com,95,0,followers2000
+338,5139030,0,716,"Bots, AI, advanced web frameworks, ohlc applications, you name it! I build it!",36,5,followers2000
