@@ -1,5 +1,10 @@
 # Quick Start
 
+## Overview
+
+Dashboard that contains all the visualizations: dash.html
+
+
 ## Data Preparing
 
 - Download cleaned data and unzip it in the project root directory
